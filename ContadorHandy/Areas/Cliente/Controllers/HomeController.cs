@@ -1,9 +1,10 @@
-﻿using ContadorHandy.Models;
+﻿using ContadorHandy.Modelos;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace ContadorHandy.Controllers
+namespace ContadorHandy.Areas.Cliente.Controllers
 {
+    [Area("Cliente")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

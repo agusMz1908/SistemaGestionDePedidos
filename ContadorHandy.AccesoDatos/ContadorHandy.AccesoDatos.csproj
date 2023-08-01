@@ -16,4 +16,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ContadorHandy.Modelos\ContadorHandy.Modelos.csproj" />
+  </ItemGroup>
+
 </Project>

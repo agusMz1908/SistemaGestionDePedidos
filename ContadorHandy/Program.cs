@@ -1,7 +1,17 @@
+using ContadorHandy.AccesoDatos;
+using ContadorHandy.AccesoDatos.Repository.IRepository;
+using ContadorHandy.AccesoDatos.Repository;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ConexionSQL")));
+
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IPedidoRepository, PedidoRepository>();
 
 var app = builder.Build();
 
@@ -22,6 +32,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{area=Cliente}/{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
