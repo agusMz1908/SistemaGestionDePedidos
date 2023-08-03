@@ -1,0 +1,80 @@
+﻿@using ContadorHandy.Utils;
+@model PaginatedList<Pedido>
+
+<h2 class="text-center pb-2">Lista de Pedidos</h2>
+
+<form method="get" action="@Url.Action("Index", "Pedido")">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Buscar por número de pedido" name="searchString" value="@ViewData["CurrentFilter"]" />
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </div>
+</form>
+
+@if (Model.Count > 0)
+{
+    <div class="row">
+        @foreach (var pedido in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Pedido Número: @pedido.Numero</h5>
+                        <p class="card-text mb-0">Fecha de Ingreso: <span class="fw-bold">@pedido.FechaIngreso</span></p>
+                        <p class="card-text mb-0">Total de terminales pedidas: <span class="fw-bold">@pedido.Total</span></p>
+                        <p class="card-text mb-0">Tipo: <span class="fw-bold">@pedido.Tipo</span></p>
+
+                        <!-- Mostrar estado del pedido -->
+                        @if (pedido.Pendientes == pedido.Total)
+                        {
+                            <p class="card-text">Pendientes: <span class="fw-bold text-danger">@pedido.Pendientes</span></p>
+                        }
+                        else if (pedido.Pendientes > 0 && pedido.Pendientes < pedido.Total)
+                        {
+                            <p class="card-text">Pendientes: <span class="fw-bold text-warning">@pedido.Pendientes</span></p>
+                        }
+                        else if (pedido.Pendientes == 0)
+                        {
+                            <p class="card-text">Pendientes: <span class="fw-bold text-success">@pedido.Pendientes</span></p>
+                        }
+
+                        @if (pedido.Pendientes == pedido.Total)
+                        {
+                            <p class="text-danger fw-bold m-0">SIN REALIZAR</p>
+                        }
+                        else if (pedido.Pendientes >= 1 && pedido.Pendientes < pedido.Total)
+                        {
+                            <p class="text-warning fw-bold m-0">EN PROCESO</p>
+                        }
+                        else
+                        {
+                            <p class="text-success fw-bold m-0">ENTREGADO</p>
+                        }
+
+                        <!-- Mostrar texto "ATRASADO" cuando corresponda -->
+                        @if (pedido.FechaIngreso.AddDays(7) < DateTime.Now)
+                        {
+                            <p class="card-text text-danger m-0 float-right fw-bold">ATRASADO</p>
+                        }
+                    </div>
+                    <div class="card-footer">
+                        <a asp-area="Admin" asp-controller="Pedido" asp-action="Details" asp-route-id="@pedido.Id" class="btn btn-primary">Detalles</a>
+                        <a asp-area="Admin" asp-controller="Pedido" asp-action="PartialDelivery" asp-route-id="@pedido.Id" class="btn btn-primary">Entrega</a>
+                        <a asp-area="Admin" asp-controller="Pedido" asp-action="Delete" asp-route-id="@pedido.Id" class="btn btn-danger">Eliminar</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p>No hay pedidos registrados.</p>
+}
+
+<a href="@Url.Action("Create", "Pedido")" class="btn btn-primary">Agregar Pedido</a>
+
+
+
+
+
+

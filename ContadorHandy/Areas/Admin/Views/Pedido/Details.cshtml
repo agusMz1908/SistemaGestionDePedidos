@@ -1,0 +1,22 @@
+﻿@model Pedido
+
+<h2 class="text-center">Detalles del Pedido</h2>
+
+<div class="d-flex justify-content-center">
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title display-3 pb-4 text-center">Pedido Número: @Model.Numero</h5>
+                <p class="card-text font-weight-bold">Fecha de Ingreso: <span class="fw-bold">@Model.FechaIngreso</span></p>
+                <p class="card-text">Tipo de Pedido: <span class="fw-bold">@Model.Tipo</span></p>
+                <p class="card-text">Total de terminales pedidas: <span class="fw-bold">@Model.Total</span></p>
+                <p class="card-text">Equipos restantes Antel: <span class="fw-bold">@Math.Max(Model.EquiposAntel - Model.EntregadosAntel, 0)</span></p>
+                <p class="card-text">Equipos restantes Movistar: <span class="fw-bold">@Math.Max(Model.EquiposMovistar - Model.EntregadosMovistar, 0)</span></p>
+                <p class="card-text">Equipos restantes Claro: <span class="fw-bold">@Math.Max(Model.EquiposClaro - Model.EntregadosClaro, 0)</span></p>
+                <p class="card-text">Equipos restantes ETH: <span class="fw-bold">@Math.Max(Model.EquiposETH - Model.EntregadosETH, 0)</span></p>
+                <p class="card-text">Pendientes: <span class="fw-bold">@Model.Pendientes</span></p>
+            </div>
+        </div>
+        <a asp-area="Admin" asp-controller="Pedido" asp-action="Index" class="btn btn-primary mt-3">Volver al Listado</a>
+    </div>
+</div>

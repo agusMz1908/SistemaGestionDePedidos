@@ -1,0 +1,51 @@
+﻿@model Pedido
+
+<h2 class="text-center">Crear Nuevo Pedido</h2>
+<div class="d-flex justify-content-center">
+    <div class="col-sm-6">
+        @using (Html.BeginForm())
+        {
+            <div class="form-group">
+                <label asp-for="Numero">Número de Pedido:</label>
+                <input asp-for="Numero" class="form-control" />
+                <span asp-validation-for="Numero" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Tipo">Tipo de Pedido:</label>
+                <select asp-for="Tipo" class="form-control">
+                    <option value="Normal">Normal</option>
+                    <option value="PosLink">PosLink</option>
+                </select>
+                <span asp-validation-for="Tipo" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="EquiposAntel">Cantidad Equipos Antel:</label>
+                <input asp-for="EquiposAntel" class="form-control" type="number" />
+                <span asp-validation-for="EquiposAntel" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="EquiposMovistar">Cantidad Equipos Movistar:</label>
+                <input asp-for="EquiposMovistar" class="form-control" type="number" />
+                <span asp-validation-for="EquiposMovistar" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="EquiposClaro">Cantidad Equipos Claro:</label>
+                <input asp-for="EquiposClaro" class="form-control" type="number" />
+                <span asp-validation-for="EquiposClaro" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="EquiposETH">Cantidad Equipos ETH:</label>
+                <input asp-for="EquiposETH" class="form-control" type="number" />
+                <span asp-validation-for="EquiposETH" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-3">Crear Pedido</button>
+        }
+    </div>
+</div>
+

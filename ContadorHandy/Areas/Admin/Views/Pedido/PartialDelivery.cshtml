@@ -1,0 +1,40 @@
+﻿@model Pedido
+
+<h2 class="text-center">Entrega Parcial del Pedido</h2>
+<div class="d-flex justify-content-center">
+    <div class="col-sm-6">
+        @using (Html.BeginForm())
+        {
+            <input asp-for="Id" hidden />
+            <div class="form-group">
+                <label asp-for="Numero">Número de Pedido:</label>
+                <input asp-for="Numero" class="form-control" disabled />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="EntregadosAntel">Cantidad Equipos Antel:</label>
+                <input asp-for="EntregadosAntel" class="form-control" type="number" />
+                <span asp-validation-for="EntregadosAntel" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="EntregadosMovistar">Cantidad Equipos Movistar:</label>
+                <input asp-for="EntregadosMovistar" class="form-control" type="number" />
+                <span asp-validation-for="EntregadosMovistar" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="EntregadosClaro">Cantidad Equipos Claro:</label>
+                <input asp-for="EntregadosClaro" class="form-control" type="number" />
+                <span asp-validation-for="EntregadosClaro" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="EntregadosETH">Cantidad Equipos ETH:</label>
+                <input asp-for="EntregadosETH" class="form-control" type="number" />
+                <span asp-validation-for="EntregadosETH" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-3">Registrar Entrega</button>
+        }
+    </div>
