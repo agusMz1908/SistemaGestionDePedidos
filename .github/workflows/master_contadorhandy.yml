@@ -53,5 +53,5 @@ jobs:
         with:
           app-name: 'ContadorHandy'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1E380DBA33614FA39D0926811832DA94 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_3CF0FA00936F4B49A381CED014D2836C }}
           package: .
