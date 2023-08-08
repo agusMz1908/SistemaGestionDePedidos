@@ -14,7 +14,7 @@
                 <p class="card-text">Equipos restantes Movistar: <span class="fw-bold">@Math.Max(Model.EquiposMovistar - Model.EntregadosMovistar, 0)</span></p>
                 <p class="card-text">Equipos restantes Claro: <span class="fw-bold">@Math.Max(Model.EquiposClaro - Model.EntregadosClaro, 0)</span></p>
                 <p class="card-text">Equipos restantes ETH: <span class="fw-bold">@Math.Max(Model.EquiposETH - Model.EntregadosETH, 0)</span></p>
-                <p class="card-text">Pendientes: <span class="fw-bold">@Model.Pendientes</span></p>
+                <p class="card-text">Pendientes: <span class="fw-bold">@Math.Max(Model.Pendientes, 0)</span></p>
             </div>
         </div>
         <a asp-area="Admin" asp-controller="Pedido" asp-action="Index" class="btn btn-primary mt-3">Volver al Listado</a>
