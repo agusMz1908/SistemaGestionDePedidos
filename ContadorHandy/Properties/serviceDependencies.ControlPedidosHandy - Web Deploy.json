@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "ignored": "true",
+      "type": "mssql",
+      "connectionId": "ConnectionStrings:AzureDB"
+    },
+    "mssql2": {
+      "serviceConnectorResourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Web/sites/ControlPedidosHandy/providers/Microsoft.ServiceLinker/linkers/ConnectionStringsConexionSQL_BAFDA3B789",
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/contadorhandyazuredbserver/databases/ContadorHandyDB",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:ConexionSQL"
+    }
+  }
+}
