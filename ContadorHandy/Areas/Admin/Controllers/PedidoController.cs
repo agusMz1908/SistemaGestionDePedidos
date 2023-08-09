@@ -45,7 +45,7 @@ namespace ContadorHandy.Areas.Admin.Controllers
                     break;
             }
 
-            int pageSize = 10; // Puedes ajustar el número de pedidos que deseas mostrar por página
+            int pageSize = 12;
             return View(PaginatedList<Pedido>.Create(pedidos.AsNoTracking(), pageNumber ?? 1, pageSize));
 
         }

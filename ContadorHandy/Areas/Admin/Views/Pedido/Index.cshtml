@@ -7,6 +7,7 @@
     <div class="input-group mb-3">
         <input type="text" class="form-control" placeholder="Buscar por número de pedido" name="searchString" value="@ViewData["CurrentFilter"]" />
         <button type="submit" class="btn btn-primary">Buscar</button>
+        <a href="@Url.Action("Create", "Pedido")" class="btn btn-primary mx-2 rounded-2">Agregar Pedido</a>
     </div>
 </form>
 
@@ -71,7 +72,40 @@ else
     <p>No hay pedidos registrados.</p>
 }
 
-<a href="@Url.Action("Create", "Pedido")" class="btn btn-primary">Agregar Pedido</a>
+@if (Model.TotalPages > 1)
+{
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            @if (Model.HasPreviousPage)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="@Url.Action("Index", "Pedido", new { sortOrder = ViewData["CurrentSort"], searchString = ViewData["CurrentFilter"], pageNumber = Model.PageIndex - 1 })" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Anterior</span>
+                    </a>
+                </li>
+            }
+
+            @for (var i = 1; i <= Model.TotalPages; i++)
+            {
+                <li class="page-item @(i == Model.PageIndex ? "active" : "")">
+                    <a class="page-link" href="@Url.Action("Index", "Pedido", new { sortOrder = ViewData["CurrentSort"], searchString = ViewData["CurrentFilter"], pageNumber = i })">@i</a>
+                </li>
+            }
+
+            @if (Model.HasNextPage)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="@Url.Action("Index", "Pedido", new { sortOrder = ViewData["CurrentSort"], searchString = ViewData["CurrentFilter"], pageNumber = Model.PageIndex + 1 })" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Siguiente</span>
+                    </a>
+                </li>
+            }
+        </ul>
+    </nav>
+}
+
 
 
 
