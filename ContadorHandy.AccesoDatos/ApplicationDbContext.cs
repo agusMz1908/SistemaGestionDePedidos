@@ -18,5 +18,6 @@ namespace ContadorHandy.AccesoDatos
         }
 
         public DbSet<Pedido> Pedidos { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
     }
 }
