@@ -52,3 +52,31 @@ body {
 .text-success {
     color: green;
 }
+
+.sin-bordes {
+    border: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.bg-handy {
+    background-color: #622BF5;
+}
+
+.margin-der {
+    margin-right: 8px;
+}
+
+.btn-handy {
+    background-color: #622BF5;
+}
+
+.paginadoHandy {
+    background-color: #622BF5;
+}
+    .paginadoHandy:hover {
+        background-color: white;
+        color: #622BF5;
+    }

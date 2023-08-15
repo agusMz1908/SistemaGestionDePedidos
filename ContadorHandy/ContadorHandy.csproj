@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ContadorHandy.AccesoDatos\ContadorHandy.AccesoDatos.csproj" />
+    <ProjectReference Include="..\ContadorHandy.Utilidades\ContadorHandy.Utilidades.csproj" />
   </ItemGroup>
 
   <ItemGroup>
