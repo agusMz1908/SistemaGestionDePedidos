@@ -4751,15 +4751,13 @@ textarea.form-control-lg {
 .page-link:hover {
     z-index: 2;
     color: #622BF5;
-    background-color: #622BF5;
-    border-color: #dee2e6;
 }
 .page-link:focus {
-  z-index: 3;
-  color: #0a58ca;
-  background-color: #e9ecef;
-  outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    z-index: 3;
+    color: #622BF5;
+    background-color: #e9ecef;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
 }
 
 .page-item:not(:first-child) .page-link {
@@ -4768,7 +4766,7 @@ textarea.form-control-lg {
 .page-item.active .page-link {
   z-index: 3;
   color: #fff;
-  background-color: #0d6efd;
+  background-color: #fff;
   border-color: #0d6efd;
 }
 .page-item.disabled .page-link {

@@ -80,3 +80,11 @@ body {
         background-color: white;
         color: #622BF5;
     }
+
+.texto-handy {
+    color: white;
+}
+
+    .texto-handy:hover {
+        color: #622BF5;
+    }
