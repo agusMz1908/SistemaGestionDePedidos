@@ -50,7 +50,7 @@
                         }
 
                         <!-- Mostrar texto "ATRASADO" cuando corresponda -->
-                        @if (pedido.FechaIngreso.AddDays(7) < DateTime.Now)
+                        @if (pedido.FechaIngreso.AddDays(7) < DateTime.Now && pedido.Pendientes != 0)
                         {
                             <p class="card-text text-danger m-0 float-right fw-bold">ATRASADO</p>
                         }
