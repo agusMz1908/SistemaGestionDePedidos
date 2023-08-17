@@ -17,8 +17,9 @@
             <div class="col-md-4 mb-4">
                 <div class="card border-1">
                     <div class="card-body">
-                        <h5 class="card-title">PEDIDO NÚMERO: @pedido.Numero</h5>
-                        <p class="card-text mb-0">Fecha de Ingreso: <span class="fw-bold">@pedido.FechaIngreso</span></p>
+                        <h5 class="card-title pb-2">PEDIDO NÚMERO: @pedido.Numero</h5>
+                        <p class="card-text mb-0">Fecha de Ingreso: <span class="fw-bold">@pedido.FechaIngreso.ToString("d")</span></p>
+                        <p class="card-text">Fecha de Entrega: <span class="fw-bold">@pedido.FechaFinalizado?.ToString("d")</span></p>
                         <p class="card-text mb-0">Total de terminales pedidas: <span class="fw-bold">@pedido.Total</span></p>
                         <p class="card-text mb-0">Tipo: <span class="fw-bold">@pedido.Tipo</span></p>
 
@@ -35,25 +36,25 @@
                         {
                             <p class="card-text">Pendientes: <span class="fw-bold text-success">@pedido.Pendientes</span></p>
                         }
-
-                        @if (pedido.Pendientes == pedido.Total)
-                        {
-                            <p class="text-danger fw-bold m-0">SIN REALIZAR</p>
-                        }
-                        else if (pedido.Pendientes >= 1 && pedido.Pendientes < pedido.Total)
-                        {
-                            <p class="text-warning fw-bold m-0">EN PROCESO</p>
-                        }
-                        else
-                        {
-                            <p class="text-success fw-bold m-0">ENTREGADO</p>
-                        }
-
-                        <!-- Mostrar texto "ATRASADO" cuando corresponda -->
-                        @if (pedido.FechaIngreso.AddDays(7) < DateTime.Now && pedido.Pendientes != 0)
-                        {
-                            <p class="card-text text-danger m-0 float-right fw-bold">ATRASADO</p>
-                        }
+                        <div class="d-flex justify-content-between align-items-center">
+                            @if (pedido.Pendientes == pedido.Total)
+                            {
+                                <p class="text-danger fw-bold m-0">SIN REALIZAR</p>
+                            }
+                            else if (pedido.Pendientes >= 1 && pedido.Pendientes < pedido.Total)
+                            {
+                                <p class="text-warning fw-bold m-0">EN PROCESO</p>
+                            }
+                            else
+                            {
+                                <p class="text-success fw-bold m-0">ENTREGADO</p>
+                            }
+                            <!-- Mostrar texto "ATRASADO" cuando corresponda -->
+                            @if (pedido.FechaIngreso.AddDays(7) < DateTime.Now && pedido.Pendientes != 0)
+                            {
+                                <p class="card-text text-danger m-0 float-right fw-bold">ATRASADO</p>
+                            }
+                        </div>
                     </div>
                     <div class="card-footer">
                         <a asp-area="Admin" asp-controller="Pedido" asp-action="Details" asp-route-id="@pedido.Id" class="btn btn-handy text-white sin-bordes">Detalles</a>

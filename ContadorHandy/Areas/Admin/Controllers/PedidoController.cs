@@ -108,6 +108,11 @@ namespace ContadorHandy.Areas.Admin.Controllers
             pedido.EntregadosClaro += entregadosClaro;
             pedido.EntregadosETH += entregadosETH;
 
+            if (pedido.Pendientes == 0 && pedido.FechaFinalizado == null)
+            {
+                pedido.FechaFinalizado = DateTime.Now;   
+            }
+
             _unitOfWork.Save();
 
             return RedirectToAction("Details", new { id });
