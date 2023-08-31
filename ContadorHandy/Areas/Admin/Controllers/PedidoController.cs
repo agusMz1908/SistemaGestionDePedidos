@@ -3,8 +3,6 @@ using ContadorHandy.AccesoDatos.Repository.IRepository;
 using ContadorHandy.Modelos;
 using Microsoft.EntityFrameworkCore;
 using ContadorHandy.Utils;
-using iTextSharp.text;
-using iTextSharp.text.pdf;
 using System.IO;
 using System.Text;
 

@@ -34,7 +34,11 @@ namespace ContadorHandy.Modelos
         public int EntregadosETH { get; set; }
         public int Total => EquiposAntel + EquiposMovistar + EquiposClaro + EquiposETH;
         public int Pendientes => Total - (EntregadosAntel + EntregadosMovistar + EntregadosClaro + EntregadosETH);
+
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime FechaIngreso { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? FechaFinalizado { get; set; }
     }
 }
