@@ -1,0 +1,37 @@
+﻿@model Pedido
+
+<h2 class="text-center">Crear Nuevo Pedido</h2>
+<div class="d-flex justify-content-center">
+    <div class="col-sm-6">
+        @using (Html.BeginForm())
+        {
+            <input asp-for="Id" hidden />
+            <div class="form-group" method="post">
+                <label asp-for="Numero">Número de Pedido:</label>
+                <input asp-for="Numero" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="EquiposAntel">Cantidad Equipos Antel:</label>
+                <input asp-for="EquiposAntel" class="form-control" type="number" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="EquiposMovistar">Cantidad Equipos Movistar:</label>
+                <input asp-for="EquiposMovistar" class="form-control" type="number" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="EquiposClaro">Cantidad Equipos Claro:</label>
+                <input asp-for="EquiposClaro" class="form-control" type="number" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="EquiposETH">Cantidad Equipos ETH:</label>
+                <input asp-for="EquiposETH" class="form-control" type="number" />
+            </div>
+
+            <button type="submit" class="btn btn-handy mt-3 text-white sin-bordes">Editar Pedido</button>
+        }
+    </div>
+</div>

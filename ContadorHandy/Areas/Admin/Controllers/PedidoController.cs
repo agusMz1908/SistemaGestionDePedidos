@@ -3,6 +3,10 @@ using ContadorHandy.AccesoDatos.Repository.IRepository;
 using ContadorHandy.Modelos;
 using Microsoft.EntityFrameworkCore;
 using ContadorHandy.Utils;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.IO;
+using System.Text;
 
 namespace ContadorHandy.Areas.Admin.Controllers
 {
@@ -10,6 +14,25 @@ namespace ContadorHandy.Areas.Admin.Controllers
     public class PedidoController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
+
+        private readonly Dictionary<string, string> NumeroParteModeloMap = new Dictionary<string, string>
+        {
+            { "TWF30510174J", "MOVE 2500 3G" },
+            { "TWF30511995T", "MOVE 2500 3G" },
+            { "TWF31311849T", "MOVE 2500 3G/WIFI" },
+            { "TWF31311564R", "MOVE 2500 3G/WIFI"},
+            { "TWF30011989T", "MOVE 2500 ETH"},
+            { "TWF30010177C", "MOVE 2500 ETH"},
+            { "TWF33010596C", "MOVE 2500 FULL"},
+            { "TWF33010517C", "MOVE 2500 FULL"},
+            { "TWF33010519C", "MOVE 2500 FULL"},
+            { "TWF33011847T", "MOVE 2500 FULL"},
+            { "TWA30510350C", "MOVE 5000 3G"},
+            { "TWA30510350E", "MOVE 5000 3G"},
+            { "TWA31911759T", "MOVE 5000 3G"},
+            { "TWA31910429E", "MOVE 5000 3G"},
+            { "TWA31311098R", "MOVE 5000 3G"}
+        };
 
         public PedidoController(IUnitOfWork unitOfWork)
         {
@@ -82,9 +105,10 @@ namespace ContadorHandy.Areas.Admin.Controllers
             return View(pedido);
         }
 
-        public IActionResult PartialDelivery(int id)
+        public IActionResult Edit(int id) 
         {
             var pedido = _unitOfWork.Pedido.Get(p => p.Id == id);
+
             if (pedido == null)
             {
                 return NotFound();
@@ -95,29 +119,30 @@ namespace ContadorHandy.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult PartialDelivery(int id, int entregadosAntel, int entregadosMovistar, int entregadosClaro, int entregadosETH)
+        public IActionResult Edit(int id, Pedido pedidoEditado)
         {
             var pedido = _unitOfWork.Pedido.Get(p => p.Id == id);
+
             if (pedido == null)
             {
                 return NotFound();
             }
 
-            pedido.EntregadosAntel += entregadosAntel;
-            pedido.EntregadosMovistar += entregadosMovistar;
-            pedido.EntregadosClaro += entregadosClaro;
-            pedido.EntregadosETH += entregadosETH;
-
-            if (pedido.Pendientes == 0 && pedido.FechaFinalizado == null)
+            if (ModelState.IsValid)
             {
-                pedido.FechaFinalizado = DateTime.Now;   
+                pedido.EquiposETH = pedidoEditado.EquiposETH;
+                pedido.EquiposAntel = pedidoEditado.EquiposAntel;
+                pedido.EquiposMovistar = pedidoEditado.EquiposMovistar;
+                pedido.EquiposClaro = pedidoEditado.EquiposClaro;
+
+                _unitOfWork.Save();
+
+                // Redirige a los detalles del pedido
+                return RedirectToAction("Details", new { area = "Admin", id = pedido.Id });
             }
 
-            _unitOfWork.Save();
-
-            return RedirectToAction("Details", new { id });
+            return View(pedidoEditado);
         }
-
         public IActionResult Delete(int id)
         {
             var pedido = _unitOfWork.Pedido.Get(p => p.Id == id);
@@ -153,5 +178,47 @@ namespace ContadorHandy.Areas.Admin.Controllers
 
             return View();
         }
+
+        public IActionResult PartialDelivery(int id)
+        {
+            var pedido = _unitOfWork.Pedido.Get(p => p.Id == id);
+            if (pedido == null)
+            {
+                return NotFound();
+            }
+
+            return View(pedido);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult PartialDelivery(int id, int entregadosAntel, int entregadosMovistar, int entregadosClaro, int entregadosETH)
+        {
+            var pedido = _unitOfWork.Pedido.Get(p => p.Id == id);
+            if (pedido == null)
+            {
+                return NotFound();
+            }
+
+            // Restar los valores entregados de las propiedades Equipos
+            pedido.EntregadosAntel += entregadosAntel;
+            pedido.EntregadosMovistar += entregadosMovistar;
+            pedido.EntregadosClaro += entregadosClaro;
+            pedido.EntregadosETH += entregadosETH;
+
+            if (pedido.Pendientes == 0 && pedido.FechaFinalizado == null)
+            {
+                pedido.FechaFinalizado = DateTime.Now;
+            }
+
+            _unitOfWork.Save();
+
+            // Limpiar la información en el LocalStorage
+            TempData["ClearLocalStorage"] = true;
+
+            // Redirigir a los detalles del pedido
+            return RedirectToAction("Details", new { area = "Admin", id = pedido.Id });
+        }
     }
 }
+

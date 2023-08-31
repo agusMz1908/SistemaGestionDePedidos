@@ -88,3 +88,19 @@ body {
     .texto-handy:hover {
         color: #622BF5;
     }
+
+.EstadoColor {
+    font-weight: bold;
+}
+
+.SinRealizar {
+    color: red;
+}
+
+.EnProceso {
+    color: orange;
+}
+
+.Finalizado {
+    color: green;
+}
