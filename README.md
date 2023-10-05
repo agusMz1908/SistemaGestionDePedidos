@@ -1,6 +1,6 @@
 
 <h1 align="center">Sistema de Gestión de Pedidos para POS</h1>
-<p align="center">Este proyecto fue creado para optimizar, controlar y hacer un seguimiento eficiente de los pedidos semanales de POS configurados para uno de nuestros clientes. Nuestra empresa proporciona servicios de POS a otra empresa, que luego distribuye estos dispositivos a sus comercios asociados para las ventas.</p>
+<p align="center">Este proyecto fue creado para optimizar, controlar y hacer un seguimiento eficiente de los pedidos semanales de terminales POS</p>
 
 
 <div>
