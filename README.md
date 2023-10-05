@@ -39,3 +39,31 @@
 <p>Este sistema ha sido diseñado para proporcionar un control exhaustivo sobre los pedidos de POS, asegurando entregas precisas y oportunas a nuestros clientes.</p>
 
 
+<div>
+  <h2>Instrucciones de Instalación</h2>
+  <p>Para ejecutar este proyecto en tu máquina local, asegúrate de tener .NET SDK y Visual Studio (o Visual Studio Code) instalados. Además, el proyecto utiliza las siguientes dependencias de NuGet:</p>
+  <p>Microsoft.AspNetCore.Identity.EntityFrameworkCore (7.0.10)</p>
+  <p>Microsoft.AspNetCore.Identity.UI (7.0.10)</p>
+  <p>Microsoft.EntityFrameworkCore (8.0.0-preview.6.23329.4)</p>
+  <p>Microsoft.EntityFrameworkCore.SqlServer (8.0.0-preview.6.23329.4)</p>
+  <p>Microsoft.EntityFrameworkCore.Tools (8.0.0-preview.6.23329.4)</p>
+  <p>Microsoft.VisualStudioWeb.CodeGeneration.Design (7.0.9)</p>
+  <p>Microsoft.AspNetCore.Mvc.ViewFeatures (2.2.0)</p>
+  <p>Microsoft.Extensions.Identity.Stores (7.0.10)</p>
+
+  <h2>Conexión a la Base de Datos:</h2>
+  <p>1. Asegúrate de tener MySQL Server instalado y en funcionamiento en tu máquina local.</p>
+  <p>2. En el archivo appsettings.json, configura la cadena de conexión para apuntar a tu base de datos local:</p>
+  
+  ```js
+  "ConnectionStrings": {
+      "ConexionSQL": "Server=localhost\\SQLEXPRESS;Database=db_name;User ID=user_id;Password=password;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True;"
+      }
+  ```
+</div>
+
+
+
+
+
+
