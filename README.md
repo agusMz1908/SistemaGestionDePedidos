@@ -6,7 +6,11 @@
 <div>
   <h2>Funcionalidades Principales:</h2>
   <p> ⦁ Cada pedido se registra con un número identificativo y detalles específicos.</p> 
-  <p> ⦁ Los pedidos se dividen según la conexión del dispositivo (ETH o 3G) y el proveedor de la tarjeta SIM (ANTEL, MOVISTAR o CLARO).</p>
+  <p> ⦁ La cantidad de equipos pedidos se compone de la siguiente forma: 
+*Equipos ETH
+*Equipos Antel
+*Equipos Claro
+*Equipos Movistar.</p>
   <p> ⦁ Se registra la fecha de ingreso y finalización del pedido. El estado del pedido se actualiza automáticamente a "ENTREGADO" cuando se completa.</p>
 </div>
 
