@@ -60,6 +60,21 @@
       "ConexionSQL": "Server=localhost\\SQLEXPRESS;Database=db_name;User ID=user_id;Password=password;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True;"
       }
   ```
+
+<h2>Pasos de Instalacion:</h2>
+
+<h3>1. Clonar Repositorio:</h3>
+  <p>git clone https://github.com/agusMz1908/SistemaGestionDePedidos.git</p>
+  <p>cd SistemaGestionDePedidos</p>
+
+<h3>2. Restaurar Dependencias:</h3>
+<p>dotnet restore</p>
+
+<h3>3. Aplicar Migraciones de Base de Datos:</h3>
+<p>dotnet ef database update</p>
+
+<h3>4. Ejecutar el Proyecto:</h4>
+<p>dotnet run</p>
 </div>
 
 
